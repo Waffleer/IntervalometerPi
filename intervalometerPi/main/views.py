@@ -3,7 +3,6 @@ from . models import Type, Setting, Cycle, Run
 import subprocess
 
 def takePictures(context: dict):
-    
     subprocess.run(["dir"])
 
 def cancelPictures():
