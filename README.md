@@ -10,7 +10,7 @@ install python
 
 install django - https://docs.djangoproject.com/en/5.0/topics/install/ <--> sudo pip3 install django // Needs to be installed by root
 
-install g++ - theres an apt command ill try and find it
+install g++ - sudo apt-get install g++ //Should work
 
 install pigpio - https://abyz.me.uk/rpi/pigpio/download.html
 
