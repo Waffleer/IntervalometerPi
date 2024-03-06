@@ -21,4 +21,33 @@ install ad hoc network - https://www.stevemurch.com/setting-up-a-raspberry-pi-fo
 
 # How install
 Do all of the prerequisits
+clone this repo to the pi
+
+move the /install/intervalometerpi.service to /etc/systemd/system/intervalometerpi.service
+
+edit the file to change to the proper username //could make a new user if this is a shared system
+
+edit intervalometerPi/intervalometerPi/settings.py and add your network ip (the ip of this pi) to the allowed host, should look something like this.
+- ALLOWED_HOSTS = ["192.168.12.1"]
+- ALLOWED_HOSTS = ["192.168.12.1","10.10.2.1"]
+
+plug in the desired out pins of the pi, default is below. See hardware portion below for info
+- camControl.cpp
+- int shutter = 23;
+- int focus = 24;
+- If you want to change anything about that file make sure to re-complile it, the complile command is commented in the cpp
+- Just make sure they are gpio pins if you change them
+
+from there just start the service
+- sudo systemctl status intervalometerpi //Shows the status of the the service
+- sudo systemctl start intervalometerpi //Starts the service
+- sudo systemctl enable intervalometerpi //Will have the system start the service when the pi boots, make sure to run
+
+Connect to the hosted wifi on your phone and navicate to <your network ip>:8000
+
+# Hardware
+
+
+
+
 
