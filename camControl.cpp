@@ -1,9 +1,9 @@
-
 #include <iostream>
 #include <pigpio.h>
 #include <chrono>
 #include <thread>
 #include <stdlib.h>
+#include <string.h>
 
 using namespace std;
 
@@ -24,9 +24,18 @@ sudo ./a.out 1000 100 10 0
 */
 
 
+void thread_tell(int x){
+	//cout << "Thread Talking : " << x << endl;
+	string command = "python3 /home/waffleer/IntervalometerPi/intervalometerPi/manage.py updateRun " + to_string(x);
+	system(command.c_str());
+	cout << "Finished : " << x << endl;
+}
+
+
+
 int main(int argc, char *argv[])
 {
-        gpioInitialise();
+	gpioInitialise();
 
         int shutter = 23;
         int focus = 24;
@@ -55,10 +64,12 @@ int main(int argc, char *argv[])
         //Idk why
 
 
-
+	int parser = 3;
+	if(count > 20){ parser = 4; }
+	if(count > 50){ parser = 5; }
         if(bulb == 0)
         {
-                for(int x = 0; x<count; ++x){
+                for(int x = 1; x<=count; ++x){
                         gpioWrite(focus, PI_ON);
                         std::this_thread::sleep_for(std::chrono::milliseconds(40));
                         gpioWrite(shutter, PI_ON);
@@ -66,16 +77,20 @@ int main(int argc, char *argv[])
                         gpioWrite(focus, PI_OFF);
                         std::this_thread::sleep_for(std::chrono::milliseconds(10));
                         gpioWrite(shutter, PI_OFF);
-                        std::this_thread::sleep_for(std::chrono::milliseconds(pLen));
+			if(x%parser == 0)
+			{
+				thread* teller = new thread(thread_tell, x);
+                        	teller->detach();
+			}
+			std::this_thread::sleep_for(std::chrono::milliseconds(pLen));
                         if(x != count-1)
                         {
                                 std::this_thread::sleep_for(std::chrono::milliseconds(interval));
                         }
                 }
         }
+	thread* teller = new thread(thread_tell, count);
+        teller->detach();
         gpioTerminate();
         return 0;
 }
-
-
-
