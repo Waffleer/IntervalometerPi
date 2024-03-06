@@ -16,5 +16,9 @@ install pigpio - https://abyz.me.uk/rpi/pigpio/download.html
 
 install ad hoc network - https://www.stevemurch.com/setting-up-a-raspberry-pi-for-ad-hoc-networking-tech-note/2022/12
 
-# How to Run
-sudo ./run.sh   //Has to be sudo, need perms for triggering the camera
+- Makes sure to record your network ip
+- would recommend to git clone this repo before adding the ad-hoc network, there are /wifi/.sh files for switching wifi to ad-hoc network, not hard, just need to copy some files
+
+# How install
+Do all of the prerequisits
+
