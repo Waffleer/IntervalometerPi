@@ -83,10 +83,7 @@ int main(int argc, char *argv[])
                         	teller->detach();
 			}
 			std::this_thread::sleep_for(std::chrono::milliseconds(pLen));
-                        if(x != count-1)
-                        {
-                                std::this_thread::sleep_for(std::chrono::milliseconds(interval));
-                        }
+                        std::this_thread::sleep_for(std::chrono::milliseconds(interval));
                 }
         }
 	thread* teller = new thread(thread_tell, count);
