@@ -58,23 +58,16 @@ int main(int argc, char *argv[])
 
         //IDK why this is needed but it tells the camera to pay attention to this port i think, the first picture might not go off without it
         // Might be a Nikon D90 problem idk
-        gpioWrite(shutter, PI_ON); //You need to focus the camera to actually take a picture
-        std::this_thread::sleep_for(std::chrono::milliseconds(40));
-        gpioWrite(shutter, PI_OFF);
-        //Idk why
 
-
-	int parser = 3;
+        //You need to focus the camera to actually take a picture, you can just leave the shutter on
+	gpioWrite(focus, PI_ON);
+	int parser = 2;
 	if(count > 20){ parser = 4; }
 	if(count > 50){ parser = 5; }
         if(bulb == 0)
         {
                 for(int x = 1; x<=count; ++x){
-                        gpioWrite(focus, PI_ON);
-                        std::this_thread::sleep_for(std::chrono::milliseconds(40));
                         gpioWrite(shutter, PI_ON);
-                        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-                        gpioWrite(focus, PI_OFF);
                         std::this_thread::sleep_for(std::chrono::milliseconds(10));
                         gpioWrite(shutter, PI_OFF);
 			if(x%parser == 0)
@@ -82,10 +75,11 @@ int main(int argc, char *argv[])
 				thread* teller = new thread(thread_tell, x);
                         	teller->detach();
 			}
-			std::this_thread::sleep_for(std::chrono::milliseconds(pLen));
+			std::this_thread::sleep_for(std::chrono::milliseconds(pLen-1));
                         std::this_thread::sleep_for(std::chrono::milliseconds(interval));
                 }
         }
+	gpioWrite(focus,PI_OFF);
 	thread* teller = new thread(thread_tell, count);
         teller->detach();
         gpioTerminate();
