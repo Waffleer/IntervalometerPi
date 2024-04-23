@@ -5,6 +5,6 @@ systemctl disable hostapd #Enables hostapd
 
 #Change out dhcpcd.conf
 mv /etc/dhcpcd.conf /etc/dhcpcd.conf.adhoc
-mv /etc/dhcpcd.conf.leaf /etc/dhcpcd.conf
+mv /etc/dhcpcd.conf.wifi /etc/dhcpcd.conf
 
 echo "Restart Now"

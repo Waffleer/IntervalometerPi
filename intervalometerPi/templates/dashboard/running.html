@@ -1,9 +1,13 @@
 
 <!doctype html>
 <html lang="en">
+<<<<<<< HEAD
 <body style="background-color:black;">  
 
 <head>
+=======
+  <head>
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -46,7 +50,11 @@
                         count&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp{{count}}<br>
                         bulb&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp{{bulb}}<br>
                 </div>
+<<<<<<< HEAD
                 <form action='' method='POST' style="color:white;">{% csrf_token %}
+=======
+                <form action='' method='POST'>{% csrf_token %}
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
                         <br>
                         {{top}}&nbsp/&nbsp{{bottom}}<br>
                         <progress id="file" max={{bottom}} value={{top}}>70%</progress>
@@ -54,10 +62,15 @@
                         <br>
 			{% if bottom != top  %}
                         <button name="cancel" >Cancel</button><t>&nbsp&nbsp&nbsp&nbsp
+<<<<<<< HEAD
 			{% else %}
 			<button name="again" >Again</button>&nbsp&nbsp&nbsp&nbsp
 			{% endif %}
  			<button name="index" >Home</button>
+=======
+			{% endif %}
+                        <button name="index" >Another</button>
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
                 </form>
         </div>
     </body>

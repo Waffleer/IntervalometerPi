@@ -9,7 +9,10 @@ def takePictures(context: dict):
     interval = 0
     count = 0
     bulb = 0
+<<<<<<< HEAD
     report = context['report']
+=======
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
     if(context["pLenSelector"] == "sec"):
         pLen = int(float(context["pLen"])*1000)
     else:
@@ -25,8 +28,12 @@ def takePictures(context: dict):
     else:
         bulb = 0
 
+<<<<<<< HEAD
     process = Popen(["../a.out",str(pLen),str(interval),str(context["count"]),str(report)])
     #process = Popen(["../a.out",str(pLen),str(interval),str(context["count"]),str(bulb)])
+=======
+    process = Popen(["../a.out",str(pLen),str(interval),str(context["count"]),str(bulb)])
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
     #print(process)
 
 def cancelPictures():
@@ -56,7 +63,10 @@ def index(request):
         context["interval"] = request.POST.get("interval")
         context["count"] = request.POST.get("count")
         context["bulb"] = request.POST.get("bulb")
+<<<<<<< HEAD
         context["report"] = 1
+=======
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
         print(context['bulb'])
         if(context["pLenSelector"] == "sec"): pLenSelector = True
         else: pLenSelector = False
@@ -138,7 +148,10 @@ def running(request):
         "interval": "",
         "count": "",
         "bulb": "",
+<<<<<<< HEAD
         "report": 1,
+=======
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
     }
     global process
     run = Run.objects.get()
@@ -177,11 +190,14 @@ def running(request):
             run.delete()
             return redirect("index")
 
+<<<<<<< HEAD
         if 'again' in request.POST:
             run.top = 0
             run.save()
             takePictures(context)
             return redirect(f'/running')
+=======
+>>>>>>> 1bb2a7d7cd934a6288b626b9799099d842a62509
         #print(request.POST)
         print(context)
 
