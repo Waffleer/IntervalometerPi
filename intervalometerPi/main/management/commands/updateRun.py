@@ -7,8 +7,8 @@ class Command(BaseCommand):
         parser.add_argument('top', type=int)
 
     def handle(self, *args, **options):
-        print("command works")
+        #print("command works")
         run = Run.objects.get()
         run.top = options["top"]
         run.save()
-        print("Fin")
+        #print("Fin")

@@ -14,13 +14,14 @@ class Type(models.Model):
 
 
 class Setting(models.Model):
-    pLen = models.IntegerField()
+    pLen = models.DecimalField(decimal_places=1, max_digits=8)
     pLenSeconds = models.BooleanField()
-    interval = models.IntegerField()
+    interval = models.DecimalField(decimal_places=1, max_digits=8)
     intervalSeconds = models.BooleanField()
     count = models.IntegerField()
     bulb = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True) 
+    again = models.BooleanField(default=False)
 
     def __str__(self):
         if(self.pLenSeconds):   len = self.pLen

@@ -16,7 +16,6 @@ Dashboard
             align-items: center;
             justify-content: center;
             text-align: center;
-	    color:white;
         }
 
         .box img {
@@ -32,22 +31,22 @@ Dashboard
                 <h3>What do you Want in your Cycle</h3>
 
 
-                <input name="pLen" placeholder="Length of Picture" autocomplete="off"></input><br>
+                <input name="pLen" placeholder="Length of Picture" autocomplete="off" required></input><br>
 
-                <input type="radio" id="pLenSeconds" name="pLenSelector" value='sec'>
+                <input type="radio" id="pLenSeconds" name="pLenSelector" value='sec' required>
                 <label for="pLenSeconds">Input In Seconds</label><br>
-                <input type="radio" id="pLenOneOver" name="pLenSelector" value="over">
+                <input type="radio" id="pLenOneOver" name="pLenSelector" value="over" required>
                 <label for="pLenOneOver">1/(input)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><br><br>
                 
                     
-                <input name="interval" placeholder="Length Between" autocomplete="off"></input><br>
+                <input name="interval" placeholder="Length Between" required autocomplete="off"></input><br>
 
-                <input type="radio" id="intervalSeconds" name="intervalSelector" value="sec">
+                <input type="radio" id="intervalSeconds" name="intervalSelector" value="sec"required>
                 <label for="intervalSeconds">Input In Seconds</label><br>
-                <input type="radio" id="intervalOneOver" name="intervalSelector" value="over">
+                <input type="radio" id="intervalOneOver" name="intervalSelector" value="over"required>
                 <label for="intervalOneOver">1/(input)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><br><br>
 
-                <input name="count" placeholder="How Many" autocomplete="off"></input><br><br>
+                <input name="count" placeholder="How Many" required autocomplete="off"></input><br><br>
 
 
 
@@ -56,7 +55,6 @@ Dashboard
 
 		<br><br>
 		<button name="click">Click</button><br>
-
 
                 {% if running == 'true' %}
                     <br>
